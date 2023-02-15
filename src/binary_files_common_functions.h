@@ -12,5 +12,6 @@ int get_file_size_in_bytes(FILE *pfile);
 int get_records_count_in_file(FILE *pfile);
 int output(FILE *);
 void sort_data(FILE *file);
-int search_date(FILE * file, int year, int month, int day);
+int search_date(FILE *file, int year, int month, int day);
+
 #endif

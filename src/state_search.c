@@ -10,7 +10,7 @@ int main() {
     int is_error = 0;
     char full_path[PATH_SIZE];
 
-    scanf("%s", full_path);
+    scanf("%254s", full_path);
     FILE* file = fopen(full_path, "r");
 
     if (file == NULL)
@@ -25,12 +25,10 @@ int main() {
             door_state date_code = read_record_from_file(file, index);
             printf("%d", date_code.code);
         }
+        fclose(file);
     }
-    /*
-    ПРОВЕРИТЬ НА ПОСЛЕДНИЙ ЭЛЕМЕНТ ФАЙЛА
-    */
+
     if (is_error) printf("n/a");
-    fclose(file);
 
     return 0;
 }

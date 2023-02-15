@@ -10,13 +10,13 @@ int main() {
     int command = 0, is_error = 0;
     char full_path[PATH_SIZE];
 
-    scanf("%s", full_path);
+    scanf("%254s", full_path);
     FILE* file = fopen(full_path, "r+b");
 
     if (file == NULL)
         is_error = 1;
     else {
-        scanf("%d", &command);
+        scanf("%255d", &command);
 
         switch (command) {
             case 0: {
@@ -39,10 +39,10 @@ int main() {
             default:
                 is_error = 1;
         }
+        fclose(file);
     }
 
     if (is_error) printf("n/a");
-    fclose(file);
 
     return 0;
 }

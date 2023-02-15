@@ -16,5 +16,6 @@ int data_compare(door_state, door_state);
 int data_input(door_state *);
 int date_input(int *, int *, int *);
 int date_compare_less(door_state, int, int, int, int);
+void correct_time_frame(int *, int *, int *, int *, int *, int *);
 
 #endif

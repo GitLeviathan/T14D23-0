@@ -10,7 +10,7 @@ int main() {
     int is_error = 0;
     char full_path[PATH_SIZE];
 
-    scanf("%s", full_path);
+    scanf("%254s", full_path);
     FILE* file = fopen(full_path, "r+b");
 
     if (file == NULL)
@@ -21,9 +21,10 @@ int main() {
             door_state date;
             FILE* buffer = tmpfile();
             int size = get_records_count_in_file(file);
+            correct_time_frame(&day1, &month1, &year1, &day2, &month2, &year2);
+
             for (int i = 0, k = 0; i < size; i++) {
                 date = read_record_from_file(file, i);
-                // дописать разворот дат
                 if (date_compare_less(date, year1, month1, day1, 1)) {
                     write_record_in_file(buffer, &date, k);
                     k++;
@@ -32,6 +33,7 @@ int main() {
                     k++;
                 }
             }
+
             fclose(file);
             file = fopen(full_path, "wb+");
             size = get_records_count_in_file(buffer);
@@ -39,7 +41,9 @@ int main() {
                 date = read_record_from_file(buffer, i);
                 write_record_in_file(file, &date, i);
             }
+
             is_error = output(file);
+            printf("\n\n%d %d", get_records_count_in_file(file), get_records_count_in_file(buffer));
 
             fclose(file);
             fclose(buffer);

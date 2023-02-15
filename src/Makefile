@@ -1,6 +1,9 @@
 FLAGS = -Wall -Werror -Wextra
 BUILD = ../build/
 
+all:
+	make state_sort state_search clear_state
+
 state_sort:
 	gcc $(FLAGS) state_sort.c binary_files_common_functions.c data_struct.c -o $(BUILD)Quest_1
 
